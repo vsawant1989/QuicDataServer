@@ -1,0 +1,46 @@
+[package]
+name = "QuicDataServer"
+version = "0.1.0"
+edition = "2021"
+required-features = ["tls-rustls"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+quinn = "0.8.1"
+lazy_static = "1.4.0"
+serde_json = "1.0.79"
+lazy-static-include = "3.1.1"
+rcgen = "0.9.2"
+rustls = { version = "0.20.4", features=["dangerous_configuration"]}
+tokio = { version = "1.0.1", features = ["full"] }
+futures-util = "0.3.21"
+bytes = "1.1.0"
+anyhow = "1.0.22"
+tracing-subscriber = { version = "0.3.0", default-features = false, features = ["env-filter", "fmt", "ansi", "time", "local-time"] }
+tracing-futures = { version = "0.2.0", default-features = false, features = ["std-future"] }
+structopt = "0.3.0"
+url = "2"
+tracing="*"
+rustls-pemfile = "0.3.0"
+directories-next = "2"
+bencher="*"
+
+[dev-dependencies]
+url = "2"
+glassbench = "0.3"
+
+
+
+[[bin]]
+name = "server"
+path = "src/bin/server.rs"
+
+[[bin]]
+name = "client"
+path = "src/bin/client.rs"
+
+[[bench]]
+name = "benches"
+path="src/benches/benches.rs"
+harness = false
